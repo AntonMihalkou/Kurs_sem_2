@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+  <title>Registration</title>
+  <style>
+    body
+    {
+      background-image: url('https://i.gifer.com/NvL.gif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      color: #62e026;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    h1#registration {
+      margin-top: 50px;
+    }
+    input {
+      background: transparent;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    form {
+      width: 300px;
+      padding: 5px 30px 10px 30px;
+      margin: 150px auto auto auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      flex-direction: column;
+
+      border-radius: 5px;
+
+      background-color: rgba(255, 255, 255, 0.8);
+
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+
+      font-family: "Open Sans", sans-serif;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    input[type="submit"] {
+      background: #60e822;
+      border: none;
+      color: #000000;
+      padding: 10px 20px;
+      cursor: pointer;
+
+      border-radius: 5px;
+      margin-bottom: 10px;
+
+      transition: all 0.2s;
+
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    #aaa
+    {
+      font-size: 20px;
+      color: black;
+      text-align: center;
+      margin-bottom: 10px;
+      width: 360px;
+    }
+    #bbb
+    {
+      border-bottom: solid black 2px;
+      margin-bottom: 20px;
+    }
+    a {
+      text-decoration: underline;
+
+      margin-bottom: 10px;
+
+    }
+    html
+    {
+      width: 100%;
+      height: 100%;
+    }
+    div.error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<form th:action="@{/register}" name="user" th:object="${user}" method="post">
+  <div id="bbb">
+    <div id="aaa">Registration</div>
+  </div>
+  <label for="username">Username:</label>
+  <input type="text" id="username" th:field="*{username}" required>
+  <br>
+  <label for="password">Password:</label>
+  <input type="password" th:field="*{password}" id="password" name="password" required>
+  <br>
+  <input type="submit" value="Register">
+  <a th:href="@{/login}">login</a>
+</form>
+</body>
+</html>

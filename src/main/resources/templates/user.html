@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>User Page</title>
+    <style>
+        body {
+            background-image: url('https://i.gifer.com/NvL.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 300px auto;
+            border-radius: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        #aaa
+        {
+            font-size: 30px;
+            color: black;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #000, #0F0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: 95px;
+        }
+        #bbb
+        {
+            display: flex;
+            align-items: center;
+            width: 360px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid black;
+            margin-top: 10px;
+            padding-left: 15px;
+        }
+        .sss
+        {
+            font-size: 20px;
+        }
+        .circular-button {
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            background: rgb(203, 203, 203);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+        }
+        .circular-button:hover
+        {
+            background: rgba(145, 143, 143, 0.8);
+            color: white;
+        }
+        .circular-button svg {
+            fill: #333;
+        }
+        div {
+            margin: 0 auto;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            width: 50%;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <form action="/user" method="post" enctype="multipart/form-data">
+        <div id="bbb">
+            <a href="/">
+                <div class="circular-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                    </svg>
+                </div>
+            </a>
+            <div id="aaa">О себе</div>
+        </div>
+
+        <div>
+            <label for="imageFile">Выберите изображение:</label>
+            <input type="file" id="imageFile" name="imageFile" accept="image/*" multiple="multiple">
+            <button type="submit">Сохранить</button>
+            <div>
+                <img th:if="${imageData}" th:src="'data:image/png;base64,' + ${imageData}">
+            </div>
+        </div>
+        <label class="sss" th:text="'Имя пользователя: ' + ${username}"></label>
+        <label class="sss" th:text="'Сохранено паролей: ' + ${passwordCount}"></label>
+    </form>
+</div>
+</body>
+</html>

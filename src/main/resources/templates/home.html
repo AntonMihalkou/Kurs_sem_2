@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <style>
+        body {
+            background-image: url('https://i.gifer.com/NvL.gif');
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            background-color: rgba(255, 255, 255, 0.8);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 360px;
+            margin: 300px auto;
+            border-radius: 15px;
+            padding-top: 10px;
+        }
+
+        .menu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .menu ul li {
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .menu ul li a {
+            display: block;
+            padding: 20px;
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .menu ul li a:hover {
+            background-color: #444;
+            color: white;
+        }
+
+        .menu ul li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #212121;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .menu ul li:hover ul {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu ul li ul li {
+            text-align: left;
+            width: 100%;
+        }
+
+        .menu ul li ul li a {
+            padding: 10px 20px;
+        }
+
+        .menu ul li ul li a:hover {
+            background-color: #444;
+        }
+        #aaa
+        {
+            font-size: 20px;
+            color: black;
+            text-align: center;
+            margin-bottom: 10px;
+            width: 360px;
+            background: linear-gradient(to right, #000, #0F0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #bbb
+        {
+            border-bottom: solid black 2px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <ul>
+        <div id="bbb">
+            <div id="aaa">Menu</div>
+        </div>
+        <li><a href="/user">Хочешь посмотреть о себе?</a></li>
+        <li><a href="/passwords">Хранилище паролей</a></li>
+        <li><a href="/logout">Выйти</a></li>
+    </ul>
+</div>
+</body>
+</html>

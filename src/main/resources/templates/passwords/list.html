@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container
+        {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 10px;
+        }
+        body {
+            background-image: url('https://i.gifer.com/NvL.gif');
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        thead {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td:last-child {
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            padding: 8px 16px;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-edit
+        {
+            background: white;
+        }
+        .btn-edit:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Стили для кнопок */
+        a:nth-child(1) {
+            margin-right: 10px;
+        }
+
+        a:nth-child(2) {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        a:nth-child(2):hover {
+            background-color: #d32f2f;
+        }
+        .btn-add
+        {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: #62e026;
+            margin-left: 83%;
+        }
+        .btn-add:hover
+        {
+            background-color: #4bad1d;
+        }
+        .circular-button {
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            background: rgb(203, 203, 203);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+        }
+        .circular-button:hover
+        {
+            background: rgba(145, 143, 143, 0.8);
+            color: white;
+        }
+        .circular-button svg {
+            fill: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h1>
+            <a href="/">
+                <div class="circular-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                    </svg>
+                </div>
+            </a>Список паролей</h1>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="password : ${passwords}">
+            <td th:text="${password.id}"></td>
+            <td th:text="${password.name}"></td>
+            <td th:text="${password.username}"></td>
+            <td th:text="${password.password}"></td>
+            <td>
+                <a class="btn-edit" th:href="@{/passwords/edit/{id}(id=${password.id})}">Редактировать</a>
+                <a class="btn-delete" th:href="@{/passwords/delete/{id}(id=${password.id})}" onclick="return confirm('Вы уверены?')">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn-add" href="/passwords/add">Добавить</a>
+</div>
+</body>
+</html>

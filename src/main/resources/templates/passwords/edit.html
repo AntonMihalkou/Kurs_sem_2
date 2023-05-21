@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit password</title>
+  <style>
+    body {
+      background-image: url('https://i.gifer.com/NvL.gif');
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 200px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="password"] {
+      width: 95%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button[type="submit"] {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+      background-color: #62e026;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    button[type="submit"]:hover {
+      background-color: #4bad1d;
+    }
+    .circular-button {
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+      background: rgb(203, 203, 203);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ccc;
+    }
+    .circular-button:hover
+    {
+      background: rgba(145, 143, 143, 0.8);
+      color: white;
+    }
+    .circular-button svg {
+      fill: #333;
+    }
+    a {
+      display: inline-block;
+      padding: 8px 16px;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+    }
+    input
+    {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    h1 {
+      display: block;
+      font-size: 2em;
+      margin-block-start: 0.67em;
+      margin-block-end: 0.67em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<form th:action="@{/passwords/edit}" method="post" th:object="${password}">
+  <div>
+    <h1>
+      <a href="/passwords">
+        <div class="circular-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+          </svg>
+        </div>
+      </a>Изменить данные</h1>
+  </div>
+  <input type="hidden" id="id" name="id" th:value="${password.id}">
+  <label for="name">Название:</label>
+  <input type="text" id="name" name="name" th:value="${password.name}" required>
+  <br>
+  <label for="username">Логин:</label>
+  <input type="text" id="username" name="username" th:value="${password.username}" required>
+  <br>
+  <label for="password">Пароль:</label>
+  <input type="text" id="password" name="password" th:value="${password.password}" required>
+  <br>
+  <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

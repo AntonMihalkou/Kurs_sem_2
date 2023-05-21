@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+  <style>
+    body
+    {
+      background-image: url('https://i.gifer.com/NvL.gif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: #62e026;
+
+      font-family: "Open Sans", sans-serif;
+    }
+
+    h1#login {
+      margin-top: 50px;
+    }
+    #aaa
+    {
+      font-size: 20px;
+      color: black;
+      text-align: center;
+      margin-bottom: 10px;
+      width: 360px;
+    }
+    #bbb
+    {
+      border-bottom: solid black 2px;
+      margin-bottom: 20px;
+    }
+    #error-box {
+      display: none;
+      position: fixed;
+      bottom:93%;
+      left: 91%;
+      transform: translateX(-50%);
+      width: 250px;
+      padding: 15px;
+      background-color: #f44336;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 9999;
+      text-align: center;
+      animation: slide-up 0.5s ease-in-out forwards;
+      font-size: 20px;
+    }
+    #error-box .close-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    @keyframes slide-up {
+      0% {
+        bottom: -100%;
+      }
+      100% {
+        bottom: 20px;
+      }
+    }
+    @keyframes slide-down {
+      0% {
+        bottom: 20px;
+      }
+      100% {
+        bottom: -100%;
+      }
+    }
+    input {
+      background: transparent;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    form {
+      width: 300px;
+      padding: 5px 30px 10px 30px;
+      margin: 150px auto auto auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      flex-direction: column;
+
+      border-radius: 5px;
+
+      background-color: rgba(255, 255, 255, 0.8);
+
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+
+      font-family: "Open Sans", sans-serif;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    input[type="submit"] {
+      background: #60e822;
+      border: none;
+      color: #000000;
+      padding: 10px 20px;
+      cursor: pointer;
+
+      border-radius: 5px;
+      margin-bottom: 10px;
+
+      transition: all 0.2s;
+
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    a {
+      text-decoration: underline;
+      margin-bottom: 10px;
+
+    }
+    html {
+      width: 100%;
+      height: 100%;
+    }
+    div.error {
+      color: red;
+    }
+  </style>
+  <title>Login</title>
+</head>
+<body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var errorBox = document.getElementById('error-box');
+    if (errorBox) {
+      errorBox.style.display = 'block';
+      setTimeout(function() {
+        errorBox.style.display = 'none';
+      }, 5000); // 5000 миллисекунд (5 секунд)
+    }
+  });
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('close-button')) {
+      var errorBox = document.getElementById('error-box');
+      if (errorBox) {
+        errorBox.style.display = 'none';
+      }
+    }
+  });
+</script>
+<div id="error-box" th:if="${param.error}">
+  <span class="close-button">&times;</span>
+  Invalid username or password.
+</div>
+<div th:if="${param.logout}">
+  You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
+  <div id="bbb">
+    <div id="aaa">Login</div>
+  </div>
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required>
+  <br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+  <br>
+  <input type="submit" value="Login">
+  <a th:href="@{/register}">Register</a>
+</form>
+</body>
+</html>
