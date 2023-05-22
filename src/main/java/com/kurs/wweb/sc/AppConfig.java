@@ -1,4 +1,4 @@
-package com.kurs.wweb.SC;
+package com.kurs.wweb.sc;
 
 
 import org.springframework.context.annotation.Bean;
@@ -9,9 +9,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 
+/**
+ * Класс конфигурации приложения.
+ */
 @Configuration
 @EnableJpaRepositories(basePackages = "com.kurs.wweb.repository")
 public class AppConfig {
+
+    /**
+     * Создает бин PasswordEncoder.
+     * @return объект PasswordEncoder.
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
